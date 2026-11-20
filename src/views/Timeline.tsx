@@ -9,6 +9,7 @@ const CATEGORIES: { id: EventCategory; label: string }[] = [
   { id: 'achievement', label: 'Achievement or turning point' },
   { id: 'alcohol', label: 'Period of heavy drinking' },
   { id: 'cannabis', label: 'Period of heavy cannabis use' },
+  { id: 'medication', label: 'Medication started, changed or stopped' },
   { id: 'other', label: 'Other' },
 ]
 
@@ -32,7 +33,8 @@ export function Timeline() {
 
   return (
     <>
-      <h1>Timeline</h1>
+      <p className="eyebrow">Timeline</p>
+      <h1>The chapters that shaped you</h1>
       <section className="card">
         <p>
           Lay out the chapters that shaped you — the hard ones and the good ones. Seeing them in order often shows
@@ -82,7 +84,7 @@ export function Timeline() {
             ))}
           </ul>
           <p className="muted">
-            Events you tag as early adversity or substance use are highlighted on the <a href="#/map">brain map</a>.
+            Events you tag as early adversity or substance use are marked on the <a href="#/map">atlas</a>.
           </p>
         </section>
       )}

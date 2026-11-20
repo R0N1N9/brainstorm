@@ -47,11 +47,11 @@ export const selfHarmFlag = (a: Assessment) => a.phq[8] > 0
 export const sleepConcern = (a: Assessment) => a.phq[2] >= 2 || a.who[3] <= 1
 export const energyConcern = (a: Assessment) => a.phq[3] >= 2 || a.who[2] <= 1
 
-export type Need = 'settle' | 'lift' | 'sleep' | 'ground' | 'process'
+export type Need = 'steady' | 'settle' | 'lift' | 'sleep' | 'ground' | 'process'
 
 /** Which kinds of practice fit the current state. Order is priority. */
-export function needs(a: Assessment | undefined, pulse: Pulse | undefined): Need[] {
-  const out: Need[] = []
+export function needs(a: Assessment | undefined, pulse: Pulse | undefined, sensitive = false): Need[] {
+  const out: Need[] = sensitive ? ['steady'] : []
   const gad = a ? gadTotal(a.gad) : 0
   const phq = a ? phqTotal(a.phq) : 0
   if (gad >= 15 || (pulse && pulse.tension >= 5)) out.push('ground')

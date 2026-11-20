@@ -62,7 +62,7 @@ function:
   hippocampal effect is modest and weakens after adjusting for sex (Calem et al. 2017; Pollok et al. 2022).
 - *Sleep loss.* Amygdala reactivity rises and prefrontal control weakens after a night without sleep
   (Yoo et al. 2007) *(unverified in this pass)*.
-- *Chronic stress, alcohol, cannabis, exercise.* See `src/data/brain.ts`; these entries come from standard
+- *Chronic stress, alcohol, cannabis, exercise.* See `src/data/atlas.ts`; these entries come from standard
   review literature and **have not been individually re-verified**. They need a pass by someone with
   neuroscience training before public release.
 
@@ -122,6 +122,59 @@ tapping/EFT, trauma-release shaking, "storing trauma in the hips".
 **Design consequence.** Local-first by default: no account, no server, no analytics. Wellness wording only.
 Any future sync must be end-to-end encrypted and opt-in.
 
+## 7. Medication harm, withdrawal and the sensitised nervous system
+
+This is the least settled area in the brief. The design rule is to say what kind of evidence stands behind
+every statement, and never to advise on dosing.
+
+**How common is withdrawal?** Henssler et al. (2024, Lancet Psychiatry; 79 studies, about 21,000 people) found
+31% reported at least one symptom after stopping an antidepressant against 17% after stopping placebo, giving a
+placebo-adjusted incidence of about 15%, and severe symptoms in 2.8%. A 2025 reanalysis argues these figures
+underestimate the problem because most data come from short industry efficacy trials where withdrawal was a
+minor consideration. An earlier review (Davies & Read 2019) reported around half; that paper was not retrieved
+in this pass *(unverified)*.
+
+**Can it last?** Acute withdrawal is usually put at one to six weeks. Protracted or post-acute withdrawal,
+lasting months to years, is described in case series and analyses of patient reports (Hengartner et al. 2020,
+n = 69 forum reports; Cosci & Chouinard 2020; Rennwald & Hengartner 2025). These sources establish that it
+happens. They cannot say how often or to whom.
+
+**Benzodiazepines.** The FDA added a boxed warning in 2020 covering dependence and withdrawal. In a
+self-selected internet survey of 1,207 users (Ritvo et al. 2023), more than half of those reporting low energy,
+memory loss, anxiety and similar symptoms said they lasted a year or more; the authors proposed the term
+benzodiazepine-induced neurological dysfunction (BIND). No control group, no prevalence estimate.
+
+**Persistent sexual dysfunction.** The European Medicines Agency concluded in 2019 that sexual dysfunction can
+persist after SSRIs/SNRIs are stopped and required label warnings. Diagnostic criteria were published in 2022
+(Healy et al.). Incidence and treatment are unknown.
+
+**Tapering.** Horowitz & Taylor (2019) proposed hyperbolic tapering from the curved relationship between dose
+and serotonin-transporter occupancy. It rests on pharmacology and cohort data; randomised trials are in
+progress. The app explains the principle and does not calculate doses.
+
+**Recognition.** In a patient survey, 47% said their doctor did not recognise their symptoms as withdrawal
+(Guy et al. 2020). Patients ask for practical non-drug coping help and specialist support (Read et al. 2024,
+n = 708).
+
+**What helps?** Almost nothing has been trialled. A survey of people stopping antidepressants or antipsychotics
+linked social support and other functional coping to better outcomes, and an interview study found many
+described exercise as protective. Against that, intolerance of exertion, heat, cold, stimulants, new drugs and
+intensive breathwork is very widely described in peer communities, and this pass found **no published
+research** on that pattern or on "windows and waves". Those items are therefore labelled *lived experience* in
+the app and should be treated as hypotheses.
+
+**Not verified in this pass:** the akathisia content (Pringsheim et al. 2018; Lohr et al. 2015), NICE NG215
+wording, the Ashton Manual, the antipsychotic and benzodiazepine mechanism entries in the atlas, and the URLs
+in the resources list.
+
+**Design consequences.**
+- A *Recovery* section with urgent-safety guidance first, evidence labels on every tip, and resources.
+- *Sensitive-system mode*: reorders practices (gentle → adapt → often too much), attaches an adaptation note to
+  each, and warns that PHQ-9/GAD-7 items overlap with withdrawal symptoms.
+- A daily window/wave log, because seeing windows return is the benefit people describe most often.
+- Atlas lenses for medications and withdrawal, with a fourth evidence grade, *reported, mechanism unclear*.
+- No taper calculator and no supplement or drug suggestions.
+
 ## Sources
 
 - [Linardon et al. 2024, mental health apps meta-analysis](https://pubmed.ncbi.nlm.nih.gov/38056219/) · [summary](https://www.nationalelfservice.net/mental-health/depression/apps-for-depression-and-anxiety-big-new-meta-analysis-supports-effectiveness/)
@@ -141,3 +194,10 @@ Any future sync must be end-to-end encrypted and opt-in.
 - [Written Exposure Therapy overview, Sloan & Marx](https://istss.org/clinicians-corner-written-exposure-therapy-wet-denise-m-sloan-and-brian-p-marx)
 - [Is phase-based treatment needed for PTSD?](https://psychologytoday.com/ie/blog/trauma-and-ptsd/202403/is-phase-based-treatment-needed-for-ptsd)
 - [FTC order against BetterHelp](https://www.ftc.gov/news-events/news/press-releases/2023/07/ftc-gives-final-approval-order-banning-betterhelp-sharing-sensitive-health-data-advertising)
+- [Henssler et al. 2024, incidence of discontinuation symptoms](https://www.nationalelfservice.net/treatment/antidepressants/antidepressant-discontinuation-symptoms-meta-analysis/) · [2025 reanalysis](https://pubmed.ncbi.nlm.nih.gov/40692314/) · [Kalfas et al., JAMA Psychiatry](https://jamanetwork.com/journals/jamapsychiatry/fullarticle/2836262)
+- [Horowitz & Taylor 2019, tapering of SSRI treatment](https://pubmed.ncbi.nlm.nih.gov/30850328/)
+- [Hengartner et al. 2020, protracted withdrawal](https://pmc.ncbi.nlm.nih.gov/articles/PMC7768871) · [Rennwald & Hengartner 2025, post-acute withdrawal](https://www.cambridge.org/core/product/8BE6D20F785E9DB6259F6757B5719C0E/core-reader)
+- [Ritvo et al. 2023, benzodiazepine-induced neurological dysfunction](https://pmc.ncbi.nlm.nih.gov/articles/PMC10309976/)
+- [Post-SSRI sexual dysfunction, BMJ 2020](https://www.doi.org/10.1136/bmj.m754)
+- [Guy et al. 2020, the patient voice](https://discovery.ucl.ac.uk/id/eprint/10123719/1/The%20patient%20voice%20patients%20who%20experience%20antidepressant%20withdrawal%20symptoms%20are%20often%20dismissed,%20or%20misdiagnosed%20with%20relap.pdf) · [Read et al. 2024, recommendations from 708 patients](https://www.lelan.org.au/wp-content/uploads/2024/09/Read-et-al-2024.pdf)
+- [Mahmood et al. 2024, lived experience of SSRI withdrawal](https://onlinelibrary.wiley.com/doi/10.1111/hex.13966) · [Predictors of successful discontinuation](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10235642/)

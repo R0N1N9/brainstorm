@@ -65,7 +65,8 @@ export function CheckIn() {
   if (step === -1)
     return (
       <>
-        <h1>Check-in</h1>
+        <p className="eyebrow">Check-in</p>
+        <h1>How are you, really?</h1>
         <Pulse />
         <section className="card">
           <h2>Two-week review</h2>

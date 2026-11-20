@@ -30,7 +30,8 @@ export function CrisisCard() {
 export function Support() {
   return (
     <>
-      <h1>Support</h1>
+      <p className="eyebrow">Support</p>
+      <h1>Help, right now</h1>
       <CrisisCard />
       <section className="card">
         <h2>Feeling overwhelmed right now</h2>

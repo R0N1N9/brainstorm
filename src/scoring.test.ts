@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { GAD7, PHQ9, WHO5 } from './data/instruments'
-import { LENSES, REGIONS } from './data/brain'
+import { GROUPS, LAYERS, STRUCTURES } from './data/atlas'
 import { PRACTICES } from './data/practices'
 import { gadBand, needs, phqBand, selfHarmFlag, sleepConcern, trend, whoBand, whoScore } from './scoring'
 import type { Assessment } from './store'
@@ -62,9 +62,21 @@ describe('flags and needs', () => {
 })
 
 describe('content integrity', () => {
-  it('every lens effect points at a real region', () => {
-    const ids = new Set(REGIONS.map((r) => r.id))
-    for (const l of LENSES) for (const k of Object.keys(l.effects)) expect(ids.has(k as never)).toBe(true)
+  it('every atlas layer points at real structures, a real group, and cites sources', () => {
+    const ids = new Set<string>(STRUCTURES.map((r) => r.id))
+    const groups = new Set<string>(GROUPS.map((g) => g.id))
+    for (const l of LAYERS) {
+      expect(groups.has(l.group)).toBe(true)
+      expect(l.sources.length).toBeGreaterThan(0)
+      expect(Object.keys(l.effects).length).toBeGreaterThan(2)
+      for (const k of Object.keys(l.effects)) expect(ids.has(k)).toBe(true)
+      if (l.source) expect(l.effects[l.source]).toBeDefined()
+    }
+    expect(new Set(LAYERS.map((l) => l.id)).size).toBe(LAYERS.length)
+  })
+  it('sensitive mode asks for steadying practices first, and some exist', () => {
+    expect(needs(undefined, undefined, true)[0]).toBe('steady')
+    expect(PRACTICES.filter((p) => p.sensitive.fit === 'gentle' && p.helps.includes('steady')).length).toBeGreaterThan(2)
   })
   it('every practice has steps, evidence and at least one need', () => {
     for (const p of PRACTICES) {

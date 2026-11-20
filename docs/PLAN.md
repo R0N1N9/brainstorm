@@ -17,14 +17,15 @@ understand what science says about how they got there, and practise body-based t
 5. **Screening, never diagnosis.** Wellness language throughout. Elevated scores lead to "talk to someone",
    and any sign of self-harm leads to crisis lines.
 
-## The four pillars
+## The five pillars
 
 | Pillar | What the user gets | v0 (built) | Later |
 |---|---|---|---|
 | **Profile** | A current picture of mood, anxiety and wellbeing with trends | WHO-5, PHQ-9, GAD-7; daily snapshot; change detection | Sleep (ISI), stress (PSS), trauma symptoms (PCL-5), interoception (MAIA-2); wearable HRV and sleep |
-| **Brain map** | An explorable atlas of what experiences are associated with, region by region | 9 regions × 7 lenses, evidence grades, lenses marked from the user's data | Anatomical 3D model; networks (default mode, salience); neurotransmitter view; more substances; recovery timelines |
+| **Atlas** | An explorable map of the whole nervous system | 29 structures across brain and body × 22 lenses in five groups (systems, life & substances, medications, withdrawal, supports); pathways drawn from their source; evidence grades | Anatomical illustration or 3D model; cortical networks; more drug classes (stimulants, lithium, gabapentinoids); recovery timelines |
 | **Timeline** | Life chapters laid out in order, to notice patterns | Low-detail entries, impact curve, links to the map | Optional private notes; mood overlaid on recent months; guided "parts of the story" reflections |
-| **Practices** | Somatic tools matched to the current state | 11 practices, breath pacer, matching by need, practice log | Audio guidance; before/after ratings to learn what works for *this* person; multi-week programmes |
+| **Practices** | Somatic tools matched to the current state | 16 practices, breath pacer, matching by need, practice log, adaptations for a sensitive system | Audio guidance; before/after ratings to learn what works for *this* person; multi-week programmes |
+| **Recovery** | Support when the nervous system has been destabilised by medication | Safety guidance, sensitive-system mode, window/wave log with 30-day chart, evidence-labelled tips, prescriber conversation guide | Dose-history log to share with a prescriber; symptom patterns by body system; printable summary; review by clinicians and people with lived experience |
 
 ## Architecture
 
@@ -40,7 +41,7 @@ understand what science says about how they got there, and practise body-based t
 
 ## Roadmap
 
-**Phase 0 — prototype (this commit).** The four pillars working end to end on local data.
+**Phase 0 — prototype (built).** The five pillars working end to end on local data.
 
 **Phase 1 — make it trustworthy.**
 - Clinical and neuroscience review of every string in `src/data/`. Several brain-atlas entries are flagged
@@ -70,6 +71,8 @@ understand what science says about how they got there, and practise body-based t
 | Scores cause alarm or false reassurance | Published cut-offs only, plain-language interpretation, prompts toward professional care |
 | Sensitive data leaks | Nothing leaves the device; encryption before any sync |
 | Regulatory drift into medical-device territory | Wellness wording; legal review before launch or before any treatment claim |
+| Recovery content read as advice to stop medication | Safety block first on the page and on every withdrawal lens; no dosing tools; prescriber involvement stated throughout |
+| Lived-experience tips mistaken for proven treatment | Each tip carries its evidence basis; the weakest category is named plainly |
 | Pseudoscience creeps in | Evidence grade required for every content entry; unsupported practices excluded (list in RESEARCH.md) |
 
 ## Open decisions

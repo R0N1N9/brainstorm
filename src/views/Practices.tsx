@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { GRADE_HELP, GRADE_LABEL, NEED_LABEL, PRACTICES, type Pacer, type Practice } from '../data/practices'
+import { FIT_LABEL, GRADE_HELP, GRADE_LABEL, NEED_LABEL, PRACTICES, type Pacer, type Practice } from '../data/practices'
 import { needs, type Need } from '../scoring'
 import { latest, newId, now, setState, useStore } from '../store'
 
@@ -55,13 +55,14 @@ function BreathPacer({ pacer }: { pacer: Pacer }) {
   )
 }
 
-function Card({ p, open, done }: { p: Practice; open: boolean; done: number }) {
+function Card({ p, open, done, sensitive }: { p: Practice; open: boolean; done: number; sensitive: boolean }) {
   const [logged, setLogged] = useState(false)
   return (
     <details className="card practice" open={open} id={p.id}>
       <summary>
         <span className="pname">{p.name}</span>
         <span className="meta">
+          {sensitive && <span className={`pill fit-${p.sensitive.fit}`}>{FIT_LABEL[p.sensitive.fit]}</span>}
           <span className="muted">{p.minutes} min</span>
           <span className={`pill grade-${p.grade}`} title={GRADE_HELP[p.grade]}>
             {GRADE_LABEL[p.grade]}
@@ -69,6 +70,7 @@ function Card({ p, open, done }: { p: Practice; open: boolean; done: number }) {
         </span>
       </summary>
       <p>{p.summary}</p>
+      {sensitive && <p className={`notice fit-note-${p.sensitive.fit}`}>{p.sensitive.note}</p>}
       <ol>
         {p.steps.map((s) => (
           <li key={s}>{s}</li>
@@ -98,7 +100,8 @@ function Card({ p, open, done }: { p: Practice; open: boolean; done: number }) {
   )
 }
 
-const FILTERS: Need[] = ['ground', 'settle', 'lift', 'sleep', 'process']
+const FILTERS: Need[] = ['steady', 'ground', 'settle', 'lift', 'sleep', 'process']
+const FIT_ORDER = { gentle: 0, adapt: 1, caution: 2 }
 
 export function Practices() {
   const s = useStore()
@@ -114,17 +117,23 @@ export function Practices() {
     if (openId) document.getElementById(openId)?.scrollIntoView({ block: 'start' })
   }, [openId])
 
-  const want = needs(latest(s.assessments), latest(s.pulses))
-  const list = PRACTICES.filter((p) => !filter || p.helps.includes(filter))
+  const want = needs(latest(s.assessments), latest(s.pulses), s.sensitive)
+  const list = PRACTICES.filter((p) => !filter || p.helps.includes(filter)).sort((a, b) =>
+    s.sensitive ? FIT_ORDER[a.sensitive.fit] - FIT_ORDER[b.sensitive.fit] : 0,
+  )
   const count = (id: string) => s.practiceLogs.filter((l) => l.practiceId === id).length
 
   return (
     <>
-      <h1>Practices</h1>
-      <p>
-        Body-first tools for shifting state. Each one carries a rating for how well it has been tested, so you know
-        what you are trying.
-      </p>
+      <p className="eyebrow">Practices</p>
+      <h1>Body-first tools for shifting state</h1>
+      <p className="lede">Each one carries a rating for how well it has been tested, so you know what you are trying.</p>
+      {s.sensitive && (
+        <p className="notice">
+          Sensitive-system mode is on. Gentle practices come first and each card says how to adapt it.{' '}
+          <a href="#/recovery">Change this in Recovery.</a>
+        </p>
+      )}
       <div className="lenses" role="group" aria-label="Filter by what you need">
         <button className={`lens ${filter === null ? 'on' : ''}`} onClick={() => setFilter(null)}>
           All
@@ -132,13 +141,13 @@ export function Practices() {
         {FILTERS.map((n) => (
           <button key={n} className={`lens ${filter === n ? 'on' : ''}`} onClick={() => setFilter(n)}>
             {NEED_LABEL[n]}
-            {want.includes(n) && <span className="dot" title="Fits your current state" />}
+            {want.includes(n) && <span className="mark" title="Fits your current state" />}
           </button>
         ))}
       </div>
       {want.length > 0 && <p className="muted small">A dot marks what fits your latest check-in.</p>}
       {list.map((p) => (
-        <Card key={p.id} p={p} open={p.id === openId} done={count(p.id)} />
+        <Card key={p.id} p={p} open={p.id === openId} done={count(p.id)} sensitive={s.sensitive} />
       ))}
     </>
   )

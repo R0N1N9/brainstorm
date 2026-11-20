@@ -6,7 +6,7 @@ export function Data() {
   const file = useRef<HTMLInputElement>(null)
   const [msg, setMsg] = useState('')
   const [confirming, setConfirming] = useState(false)
-  const empty = !s.assessments.length && !s.pulses.length && !s.events.length && !s.practiceLogs.length
+  const empty = !s.assessments.length && !s.pulses.length && !s.events.length && !s.practiceLogs.length && !s.waves.length
 
   const download = () => {
     const url = URL.createObjectURL(new Blob([JSON.stringify(s, null, 2)], { type: 'application/json' }))
@@ -30,7 +30,8 @@ export function Data() {
 
   return (
     <>
-      <h1>Your data</h1>
+      <p className="eyebrow">Your data</p>
+      <h1>Yours, and only on this device</h1>
       <section className="card">
         <h2>Where it lives</h2>
         <p>
@@ -43,6 +44,7 @@ export function Data() {
           <li>{s.pulses.length} snapshots</li>
           <li>{s.events.length} timeline chapters</li>
           <li>{s.practiceLogs.length} practice sessions</li>
+          <li>{s.waves.length} recovery log days</li>
         </ul>
         <div className="row">
           <button onClick={download} disabled={empty}>
