@@ -177,7 +177,7 @@ in the resources list.
 
 ## 8. Medications, side effects and interactions in the 3D atlas
 
-**What the model shows.** Each of 31 medications is described by the receptors, transporters and enzymes it
+**What the model shows.** Each of 29 medications is described by the receptors, transporters and enzymes it
 acts on, with a three-step strength rating simplified from receptor-binding data and standard references
 (Stahl's Essential Psychopharmacology; prescribing information). Where a drug acts is derived from where those
 targets are dense, so the same knowledge drives every drug.
