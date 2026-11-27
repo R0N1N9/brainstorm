@@ -26,9 +26,12 @@ const current = () => window.location.hash.replace(/^#\/?/, '').split('?')[0] ||
 
 function App() {
   const [route, setRoute] = useState(current)
+  // Bumped on every real navigation so a page re-reads its link parameters (in-page state uses replaceState, which does not fire this).
+  const [nav, setNav] = useState(0)
   useEffect(() => {
     const onHash = () => {
       setRoute(current())
+      setNav((n) => n + 1)
       window.scrollTo(0, 0)
     }
     window.addEventListener('hashchange', onHash)
@@ -45,7 +48,7 @@ function App() {
             <circle cx="12" cy="12" r="9" />
             <path d="M3 12c3-5 6-5 9 0s6 5 9 0" />
           </svg>
-          braindance
+          brainstorm
         </a>
         <nav aria-label="Sections">
           {TABS.filter((t) => t.id !== 'support').map((t) => (
@@ -69,11 +72,11 @@ function App() {
         </div>
       </header>
       <div className="page">
-        <main>
-          <View />
+        <main className={tab.id === 'map' ? 'wide' : undefined}>
+          <View key={nav} />
         </main>
         <footer>
-          Braindance is a self-reflection tool, not a medical device. It cannot diagnose or treat any condition and is
+          Brainstorm is a self-reflection tool, not a medical device. It cannot diagnose or treat any condition and is
           no substitute for professional care.
         </footer>
       </div>

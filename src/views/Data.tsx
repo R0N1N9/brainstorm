@@ -12,7 +12,7 @@ export function Data() {
     const url = URL.createObjectURL(new Blob([JSON.stringify(s, null, 2)], { type: 'application/json' }))
     const a = document.createElement('a')
     a.href = url
-    a.download = `braindance-${new Date().toISOString().slice(0, 10)}.json`
+    a.download = `brainstorm-${new Date().toISOString().slice(0, 10)}.json`
     a.click()
     URL.revokeObjectURL(url)
   }
@@ -24,7 +24,7 @@ export function Data() {
       replaceAll(parsed)
       setMsg('Backup restored.')
     } catch {
-      setMsg('That file is not a Braindance backup.')
+      setMsg('That file is not a Brainstorm backup.')
     }
   }
 
@@ -36,7 +36,7 @@ export function Data() {
         <h2>Where it lives</h2>
         <p>
           Everything you enter is stored in this browser on this device. There is no account, no server and no
-          analytics. Nobody else can read it, including the people who make Braindance. Clearing your browser data
+          analytics. Nobody else can read it, including the people who make Brainstorm. Clearing your browser data
           erases it, so keep a backup if it matters to you.
         </p>
         <ul className="plain">

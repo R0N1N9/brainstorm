@@ -63,6 +63,7 @@ export interface State {
   sensitive: boolean
 }
 
+// Storage key predates the rename to Brainstorm; kept so existing data still loads.
 const KEY = 'braindance.v1'
 const empty: State = { assessments: [], pulses: [], events: [], practiceLogs: [], waves: [], sensitive: false }
 

@@ -1,6 +1,6 @@
 # Research brief
 
-What the evidence says about each thing Braindance wants to do, and what that means for the design.
+What the evidence says about each thing Brainstorm wants to do, and what that means for the design.
 Searches were run in November 2026. Items marked *(unverified)* come from background knowledge and were
 not confirmed against a primary source in this pass.
 
@@ -47,7 +47,7 @@ The authors of the original ACE study (Anda, Porter & Brown 2020) state that the
 diagnostic tool nor is it predictive at the individual level". It has no clinical cut points, ignores severity,
 frequency, duration and timing, and routine screening can retraumatise people who are not ready to disclose.
 
-**Design consequence.** Braindance does not compute an ACE score. The timeline lets a person record what they
+**Design consequence.** Brainstorm does not compute an ACE score. The timeline lets a person record what they
 choose, in a few words, with no total and no risk label.
 
 ## 3. Mapping experience to brain regions
@@ -106,7 +106,7 @@ tapping/EFT, trauma-release shaking, "storing trauma in the hips".
   first is the conservative choice.
 - Self-directed expressive writing has a small average benefit and commonly raises distress for a few hours.
 
-**Design consequence.** Braindance does not attempt self-guided trauma processing. It offers
+**Design consequence.** Brainstorm does not attempt self-guided trauma processing. It offers
 (1) a low-detail timeline for perspective, (2) stabilisation skills always one tap away,
 (3) time-boxed expressive writing with cautions, and (4) clear signposting to therapy for the heavy work.
 
@@ -174,6 +174,30 @@ in the resources list.
 - A daily window/wave log, because seeing windows return is the benefit people describe most often.
 - Atlas lenses for medications and withdrawal, with a fourth evidence grade, *reported, mechanism unclear*.
 - No taper calculator and no supplement or drug suggestions.
+
+## 8. Medications, side effects and interactions in the 3D atlas
+
+**What the model shows.** Each of 31 medications is described by the receptors, transporters and enzymes it
+acts on, with a three-step strength rating simplified from receptor-binding data and standard references
+(Stahl's Essential Psychopharmacology; prescribing information). Where a drug acts is derived from where those
+targets are dense, so the same knowledge drives every drug.
+
+**Side effects.** 21 side effects are mapped with where they start, where they are felt, typical course,
+reversibility and what helps. Each "what helps" item carries its evidence basis. Most entries rest on
+well-established pharmacology and clinical guidance; the citations are listed per entry in
+`src/data/sideEffects.ts` and were written from background knowledge, **not re-verified in this pass**. The
+emotional-blunting, post-SSRI sexual dysfunction and benzodiazepine cognition entries draw on sources searched
+earlier in this brief.
+
+**Interactions.** Only mechanism-level rules are modelled: serotonin load and MAOI combinations, MAOI with
+stimulants or bupropion, additive CNS and breathing depression, QT prolongation, anticholinergic burden, CYP2D6
+inhibition, seizure threshold, valproate with lamotrigine, clonidine with beta-blockers, and opposing dopamine
+actions. This is deliberately not an interaction checker: it ignores dose, alcohol, other medicines and health
+conditions, and the UI says so on every result.
+
+**Needs review before wider use.** A pharmacist or psychiatrist should check `src/data/pharm.ts` and
+`src/data/sideEffects.ts`, especially strength ratings, the side-effect "what helps" items, and the drug lists
+per side effect.
 
 ## Sources
 

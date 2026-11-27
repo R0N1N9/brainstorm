@@ -8,6 +8,7 @@ export type StructureId =
   | 'pituitary' | 'amygdala' | 'hippocampus' | 'midbrain' | 'lc' | 'raphe' | 'vestibular' | 'medulla' | 'cerebellum'
   // body
   | 'vagus' | 'spinal' | 'symp' | 'heart' | 'lungs' | 'adrenal' | 'gut' | 'pelvic' | 'muscle' | 'peripheral' | 'skin'
+  | 'thyroid' | 'liver' | 'kidney'
 
 export interface Structure {
   id: StructureId
@@ -47,6 +48,9 @@ export const STRUCTURES: Structure[] = [
   { id: 'muscle', view: 'body', name: 'Skeletal muscle', short: 'Muscle', role: 'Tone is set continuously by the spinal cord, brainstem and basal ganglia.' },
   { id: 'peripheral', view: 'body', name: 'Peripheral sensory nerves', short: 'Sensory nerves', role: 'Carry touch, temperature, pain and position from skin and limbs.' },
   { id: 'skin', view: 'body', name: 'Skin & sweat glands', short: 'Skin', role: 'Sweating and blood flow here are driven by sympathetic nerves.' },
+  { id: 'thyroid', view: 'body', name: 'Thyroid gland', short: 'Thyroid', role: 'Sets the body’s metabolic pace; thyroid problems can look like depression or anxiety.' },
+  { id: 'liver', view: 'body', name: 'Liver', short: 'Liver', role: 'Breaks down most psychiatric drugs, mainly through the cytochrome P450 enzymes.' },
+  { id: 'kidney', view: 'body', name: 'Kidneys', short: 'Kidneys', role: 'Clear some drugs, including lithium and gabapentinoids, from the blood.' },
 ]
 
 export type Evidence = 'consistent' | 'mixed' | 'preliminary' | 'reported'
@@ -63,7 +67,7 @@ export type GroupId = 'systems' | 'experience' | 'medication' | 'withdrawal' | '
 export const GROUPS: { id: GroupId; name: string; blurb: string }[] = [
   { id: 'systems', name: 'Systems', blurb: 'How the nervous system is wired.' },
   { id: 'experience', name: 'Life & substances', blurb: 'What experiences are associated with.' },
-  { id: 'medication', name: 'Medications', blurb: 'Where psychiatric drugs act and how the body adapts.' },
+  { id: 'medication', name: 'Drug classes', blurb: 'Where each class of psychiatric drug acts and how the body adapts.' },
   { id: 'withdrawal', name: 'Withdrawal & after', blurb: 'What can happen when a drug is reduced or stopped.' },
   { id: 'support', name: 'Supports', blurb: 'What helps, and where it acts.' },
 ]

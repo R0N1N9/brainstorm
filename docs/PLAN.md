@@ -22,14 +22,14 @@ understand what science says about how they got there, and practise body-based t
 | Pillar | What the user gets | v0 (built) | Later |
 |---|---|---|---|
 | **Profile** | A current picture of mood, anxiety and wellbeing with trends | WHO-5, PHQ-9, GAD-7; daily snapshot; change detection | Sleep (ISI), stress (PSS), trauma symptoms (PCL-5), interoception (MAIA-2); wearable HRV and sleep |
-| **Atlas** | An explorable map of the whole nervous system | 29 structures across brain and body × 22 lenses in five groups (systems, life & substances, medications, withdrawal, supports); pathways drawn from their source; evidence grades | Anatomical illustration or 3D model; cortical networks; more drug classes (stimulants, lithium, gabapentinoids); recovery timelines |
+| **Atlas** | An explorable 3D map of the whole nervous system | 32 structures in a rotatable three.js model; 22 lenses; 31 medications by target; 21 side effects with where they start, where they are felt and how they reverse; two-drug comparison with mechanism-level interaction notes; flat fallback without WebGL | Anatomical illustration or 3D model; cortical networks; more drug classes (stimulants, lithium, gabapentinoids); recovery timelines |
 | **Timeline** | Life chapters laid out in order, to notice patterns | Low-detail entries, impact curve, links to the map | Optional private notes; mood overlaid on recent months; guided "parts of the story" reflections |
 | **Practices** | Somatic tools matched to the current state | 16 practices, breath pacer, matching by need, practice log, adaptations for a sensitive system | Audio guidance; before/after ratings to learn what works for *this* person; multi-week programmes |
 | **Recovery** | Support when the nervous system has been destabilised by medication | Safety guidance, sensitive-system mode, window/wave log with 30-day chart, evidence-labelled tips, prescriber conversation guide | Dose-history log to share with a prescriber; symptom patterns by body system; printable summary; review by clinicians and people with lived experience |
 
 ## Architecture
 
-- **Now:** Vite + React + TypeScript single-page app. State in `localStorage` behind `src/store.ts`.
+- **Now:** Vite + React + TypeScript single-page app, deployed to GitHub Pages by GitHub Actions. The 3D model is procedural three.js geometry, lazy-loaded with the Atlas. State in `localStorage` behind `src/store.ts`.
   Content (instruments, brain atlas, practices) is plain typed data in `src/data/`, so clinicians can review it
   without reading UI code. Scoring is pure functions in `src/scoring.ts`, covered by tests.
 - **Next:** installable PWA with offline support; move storage to IndexedDB with at-rest encryption behind a
